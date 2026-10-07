@@ -3,6 +3,7 @@ package com.agent772.createvoidtank.registry;
 import com.agent772.createvoidtank.CreateVoidTank;
 import com.agent772.createvoidtank.content.VoidTankBlock;
 import com.agent772.createvoidtank.content.VoidTankItem;
+import com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.util.entry.BlockEntry;
 
@@ -27,6 +28,7 @@ public class ModBlocks {
                 // Blockstate JSON is hand-written; skip datagen generation
             })
             .addLayer(() -> RenderType::cutoutMipped)
+            .transform(MountedFluidStorageType.mountedFluidStorage(ModMountedStorageTypes.VOID_TANK))
             .item(VoidTankItem::new)
             .model((ctx, prov) -> {
                 // Item model JSON is hand-written; skip datagen generation

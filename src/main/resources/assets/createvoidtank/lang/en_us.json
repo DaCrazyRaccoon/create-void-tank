@@ -20,6 +20,8 @@
   "configuration.createvoidtank.server.minimumHeatLevel.PASSIVE": "Passive",
   "configuration.createvoidtank.server.minimumHeatLevel.BLAZE_BURNER": "Blaze Burner",
   "configuration.createvoidtank.server.minimumHeatLevel.SUPERHEATED": "Superheated",
+  "configuration.createvoidtank.server.voidOnContraptions": "Void on Contraptions",
+  "configuration.createvoidtank.server.voidOnContraptions.tooltip": "Whether Void Tanks on moving contraptions void fluid (e.g. from a Drill Drain)",
   "createvoidtank.tooltip.mod_name": "Create Void Tank",
   "createvoidtank.tooltip.summary": "Voids any fluid pumped into it",
   "createvoidtank.tooltip.hold_shift": "Hold [Shift] for more info",

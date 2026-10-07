@@ -7,6 +7,7 @@ import com.agent772.createvoidtank.ponder.ModPonderPlugin;
 import com.agent772.createvoidtank.registry.ModBlockEntities;
 import com.agent772.createvoidtank.registry.ModBlocks;
 import com.agent772.createvoidtank.registry.ModCreativeTabs;
+import com.agent772.createvoidtank.registry.ModMountedStorageTypes;
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 
@@ -26,6 +27,7 @@ public class CreateVoidTank {
         REGISTRATE.registerEventListeners(modEventBus);
 
         ModCreativeTabs.register(modEventBus);
+        ModMountedStorageTypes.init();
         ModBlocks.init();
         ModBlockEntities.init();
 

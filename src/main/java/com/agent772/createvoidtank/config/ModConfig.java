@@ -7,6 +7,7 @@ public class ModConfig {
     public static final ModConfigSpec SPEC;
     public static final ModConfigSpec.EnumValue<ActivationMode> ACTIVATION_MODE;
     public static final ModConfigSpec.EnumValue<MinimumHeatLevel> MINIMUM_HEAT_LEVEL;
+    public static final ModConfigSpec.BooleanValue VOID_ON_CONTRAPTIONS;
 
     public enum ActivationMode {
         ALWAYS_ACTIVE,
@@ -39,6 +40,16 @@ public class ModConfig {
                         "SUPERHEATED = superheated Blaze Burner",
                         "Higher heat levels satisfy lower requirements.")
                 .defineEnum("minimumHeatLevel", MinimumHeatLevel.PASSIVE);
+
+        builder.pop();
+
+        builder.push("contraptions");
+
+        VOID_ON_CONTRAPTIONS = builder
+                .comment("Whether Void Tanks on moving contraptions void fluid (e.g. fluid collected by a Drill Drain).",
+                        "A mounted Void Tank keeps the activation state it had when the contraption was assembled.",
+                        "Set to false to ignore Void Tanks on contraptions, as in version 1.1.0.")
+                .define("voidOnContraptions", true);
 
         builder.pop();
 
