@@ -1,10 +1,8 @@
 ## Unreleased
 
-### Fixed
-- Void Tanks on moving contraptions now void fluid. They used to be ignored by the contraption's fluid storage, so a Drill Drain with only a Void Tank on board could not collect anything. A mounted Void Tank keeps the activation state it had when the contraption was assembled.
-
 ### Added
-- Server config option `voidOnContraptions` (default `true`) to turn voiding on contraptions off.
+- Drill Drain compat: a moving contraption with a Void Tank on board voids the fluid its Drill Drains collect. Real fluid tanks on the contraption are filled first; only what does not fit is voided. The Void Tank must have been active when the contraption was assembled. Fluid from other sources is not affected. Without Drill Drain installed nothing changes.
+- Server config option `voidDrillDrainFluid` (default `true`) to turn this off.
 
 ## Version 1.1.0
 
