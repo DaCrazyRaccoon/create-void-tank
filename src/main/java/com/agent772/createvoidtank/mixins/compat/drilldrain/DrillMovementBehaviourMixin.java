@@ -19,10 +19,10 @@ import net.neoforged.neoforge.fluids.capability.IFluidHandler;
  * Tank. Only applied when Drill Drain is installed (see {@code CreateVoidTankMixinPlugin}).
  * <p>
  * Drill Drain's {@code tryCollectFluids} fills the contraption's fluid storage twice (simulate, then execute)
- * and only picks the fluid up if all of it fits. This wraps both calls: the contraption's real fluid tanks are
- * filled first as usual, and whatever does not fit is reported as accepted, so it is voided at the source.
- * Fluid from any other source (e.g. Portable Fluid Interfaces) is never touched, and the Void Tank is not
- * part of the contraption's fluid storage.
+ * and only picks the fluid up if all of it fits. This wraps both calls: on a contraption with an active Void
+ * Tank the fluid skips the contraption's fluid tanks entirely and is reported as accepted, so it is voided at
+ * the source. Fluid from any other source (e.g. Portable Fluid Interfaces) is never touched and fills the
+ * contraption's tanks as usual; the Void Tank is not part of the contraption's fluid storage.
  */
 @Pseudo
 @Mixin(targets = "com.cake.drill_drain.content.replacements.DrillMovementBehaviourReplacement", remap = false)
@@ -35,10 +35,9 @@ public abstract class DrillMovementBehaviourMixin {
             require = 0)
     private int createvoidtank$voidCollectedFluid(MountedFluidStorageWrapper storage, FluidStack stack,
             IFluidHandler.FluidAction action, Operation<Integer> original, @Local(argsOnly = true) MovementContext context) {
-        int filled = original.call(storage, stack, action);
-        if (filled >= stack.getAmount() || !DrillDrainVoiding.voids(context)) {
-            return filled;
+        if (DrillDrainVoiding.voids(context)) {
+            return stack.getAmount(); // voided by the Void Tank on board; the contraption's tanks get none of it
         }
-        return stack.getAmount(); // the rest is voided by the Void Tank on board
+        return original.call(storage, stack, action);
     }
 }

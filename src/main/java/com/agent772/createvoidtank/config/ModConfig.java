@@ -48,7 +48,7 @@ public class ModConfig {
         VOID_DRILL_DRAIN_FLUID = builder
                 .comment("Drill Drain compat (only when the Drill Drain mod is installed).",
                         "Whether a moving contraption with a Void Tank on board voids the fluid its Drill Drains collect.",
-                        "Real fluid tanks on the contraption are filled first; only fluid that does not fit is voided.",
+                        "That fluid is voided right away and never goes into fluid tanks on the contraption.",
                         "The Void Tank must have been active (heat/redstone, see activationMode) when the contraption was assembled.",
                         "Fluid from other sources (e.g. Portable Fluid Interfaces) is never voided on contraptions.")
                 .define("voidDrillDrainFluid", true);
